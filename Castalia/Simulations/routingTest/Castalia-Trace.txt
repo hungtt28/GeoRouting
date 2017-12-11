@@ -1,0 +1,34 @@
+
+25.021747469283   SN.node[23].Communication.Routing        SEND      PACKET #0         FROM 23        TO 74        currentHop 23        nextHop 19        
+25.026535469276   SN.node[19].Communication.Routing        RECEIVE   PACKET #0         FROM 23        TO 74        currentHop 19        previousHop 23        
+25.026535469276   SN.node[19].Communication.Routing        SEND      PACKET #0         FROM 23        TO 74        currentHop 19        nextHop 37        
+25.036596803773   SN.node[37].Communication.Routing        RECEIVE   PACKET #0         FROM 23        TO 74        currentHop 37        previousHop 19        
+25.036596803773   SN.node[37].Communication.Routing        SEND      PACKET #0         FROM 23        TO 74        currentHop 37        nextHop 40        
+25.045349142993   SN.node[40].Communication.Routing        RECEIVE   PACKET #0         FROM 23        TO 74        currentHop 40        previousHop 37        
+25.045349142993   SN.node[40].Communication.Routing        SEND      PACKET #0         FROM 23        TO 74        currentHop 40        nextHop 30        
+25.054697468308   SN.node[30].Communication.Routing        RECEIVE   PACKET #0         FROM 23        TO 74        currentHop 30        previousHop 40        
+25.054697468308   SN.node[30].Communication.Routing        SEND      PACKET #0         FROM 23        TO 74        currentHop 30        nextHop 33        
+25.065209299794   SN.node[33].Communication.Routing        RECEIVE   PACKET #0         FROM 23        TO 74        currentHop 33        previousHop 30        
+25.065209299794   SN.node[33].Communication.Routing        DROP      PACKET #0         FROM 23        TO 74        
+25.021747469283   SN.node[23].Communication.Routing        SEND      PACKET #0         FROM 23        TO 74        currentHop 23        nextHop 19        
+25.026535469276   SN.node[19].Communication.Routing        RECEIVE   PACKET #0         FROM 23        TO 74        currentHop 19        previousHop 23        
+25.026535469276   SN.node[19].Communication.Routing        SEND      PACKET #0         FROM 23        TO 74        currentHop 19        nextHop 37        
+25.036596803773   SN.node[37].Communication.Routing        RECEIVE   PACKET #0         FROM 23        TO 74        currentHop 37        previousHop 19        
+25.036596803773   SN.node[37].Communication.Routing        SEND      PACKET #0         FROM 23        TO 74        currentHop 37        nextHop 40        
+25.045349142993   SN.node[40].Communication.Routing        RECEIVE   PACKET #0         FROM 23        TO 74        currentHop 40        previousHop 37        
+25.045349142993   SN.node[40].Communication.Routing        SEND      PACKET #0         FROM 23        TO 74        currentHop 40        nextHop 30        
+25.054697468308   SN.node[30].Communication.Routing        RECEIVE   PACKET #0         FROM 23        TO 74        currentHop 30        previousHop 40        
+25.054697468308   SN.node[30].Communication.Routing        SEND      PACKET #0         FROM 23        TO 74        currentHop 30        nextHop 33        
+25.065209299794   SN.node[33].Communication.Routing        RECEIVE   PACKET #0         FROM 23        TO 74        currentHop 33        previousHop 30        
+25.065209299794   SN.node[33].Communication.Routing        DROP      PACKET #0         FROM 23        TO 74        
+25.02903954171    SN.node[0].Communication.Routing         SEND      PACKET #0         FROM 0         TO 74        currentHop 0         nextHop 25        
+25.033827541707   SN.node[25].Communication.Routing        RECEIVE   PACKET #0         FROM 0         TO 74        currentHop 25        previousHop 0         
+25.033827541707   SN.node[25].Communication.Routing        SEND      PACKET #0         FROM 0         TO 74        currentHop 25        nextHop 98        
+25.044804215952   SN.node[98].Communication.Routing        RECEIVE   PACKET #0         FROM 0         TO 74        currentHop 98        previousHop 25        
+25.044804215952   SN.node[98].Communication.Routing        SEND      PACKET #0         FROM 0         TO 74        currentHop 98        nextHop 49        
+25.064515587613   SN.node[49].Communication.Routing        RECEIVE   PACKET #0         FROM 0         TO 74        currentHop 49        previousHop 98        
+25.064515587613   SN.node[49].Communication.Routing        SEND      PACKET #0         FROM 0         TO 74        currentHop 49        nextHop 82        
+25.071299602387   SN.node[82].Communication.Routing        RECEIVE   PACKET #0         FROM 0         TO 74        currentHop 82        previousHop 49        
+25.071299602387   SN.node[82].Communication.Routing        SEND      PACKET #0         FROM 0         TO 74        currentHop 82        nextHop 74        
+25.090480505854   SN.node[74].Communication.Routing        RECEIVE   PACKET #0         FROM 0         TO 74        currentHop 74        previousHop 82        
+25.090480505854   SN.node[74].Communication.Routing        COMPLETE  PACKET #0         FROM 0         TO 74        
