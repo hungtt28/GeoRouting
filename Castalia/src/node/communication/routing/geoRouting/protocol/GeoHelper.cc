@@ -64,9 +64,34 @@ bool intersectSections(NodeLocation_type begin1, NodeLocation_type end1, NodeLoc
 	((x3 < x && x < x4) || (x3 > x && x > x4)) && 
 	((y1 < y && y < y2) || (y1 > y && y > y2)) && 
 	((y3 < y && y < y4) || (y3 > y && y > y4)))
+	// ((x1 - x < ZERO && x - x2 < ZERO) || (x1 - x > ZERO && x - x2 > ZERO)) && 
+	// ((x3 - x < ZERO && x - x4 < ZERO) || (x3 - x > ZERO && x - x4 > ZERO)) && 
+	// ((y1 - y < ZERO && y - y2 < ZERO) || (y1 - y > ZERO && y - y2 > ZERO)) && 
+	// ((y3 - y < ZERO && y - y4 < ZERO) || (y3 - y > ZERO && y - y4 > ZERO)))
         return true;
     else
         return false;
+}
+
+NodeLocation_type intersectSections2(NodeLocation_type begin1, NodeLocation_type end1, NodeLocation_type begin2, NodeLocation_type end2)
+{
+	NodeLocation_type intersectLocation;
+	double x1 = begin1.x;
+	double y1 = begin1.y;
+	double x2 = end1.x;
+	double y2 = end1.y;
+	double x3 = begin2.x;
+	double y3 = begin2.y;
+	double x4 = end2.x;
+	double y4 = end2.y;
+	double denominator = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
+	if (abs(denominator) > ZERO) {
+		double px = (x1 * y2 - y1 * x2)*(x3 - x4) - (x1 - x2)*(x3 * y4 - y3 * x4);
+		double py = (x1 * y2 - y1 * x2)*(y3 - y4) - (y1 - y2)*(x3 * y4 - y3 * x4);
+		intersectLocation.x = px / denominator;
+		intersectLocation.y = py / denominator;
+	}
+	return intersectLocation;
 }
 
 // https://en.wikipedia.org/wiki/Circumscribed_circle
@@ -83,4 +108,15 @@ NodeLocation_type getCircumscribedcircleCenter(NodeLocation_type A, NodeLocation
 	centerLocation.y = Uy;
 	
 	return centerLocation;
+}
+
+// https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line
+double distancePoint2Line(NodeLocation_type p0, NodeLocation_type p1, NodeLocation_type p2) {
+	double x0 = p0.x;
+	double y0 = p0.y;
+	double x1 = p1.x;
+	double y1 = p1.y;
+	double x2 = p2.x;
+	double y2 = p2.y;
+	return abs((y2 - y1) * x0 - (x2 - x1) * y0 + x2 * y1 - y2 * x1) / sqrt((y2 - y1)*(y2 - y1) + (x2 - x1)*(x2 - x1));
 }

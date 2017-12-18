@@ -23,7 +23,7 @@ void RoutingTest::startup()
 	startupDelay = par("startupDelay");
 
 	packet_spacing = packet_rate > 0 ? 1 / float (packet_rate) : -1;
-	dataSN = 0;
+	dataSN = par("sequenceNumber");
 
 	// set the node's coordinate, this will also trigger HELLO msg from the GPSR routing layer
 	NodeLocation_type nodeLocation;
@@ -52,7 +52,7 @@ void RoutingTest::fromNetworkLayer(ApplicationPacket * rcvPacket,
 		const char *source, double rssi, double lqi)
 {
 	int sequenceNumber = rcvPacket->getSequenceNumber();
-
+	
 	trace() << "Received packet #" << sequenceNumber << " from node " << source;
 	collectOutput("Packets received per node", atoi(source));
 }

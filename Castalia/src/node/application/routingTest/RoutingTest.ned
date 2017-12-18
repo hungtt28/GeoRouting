@@ -28,6 +28,8 @@ simple RoutingTest like node.application.iApplication {
 											// application-level static routing. This way we can
 											// have a multi-hop throughput test   
 
+	int sequenceNumber = default(0);
+	
 	double packet_rate = default (0);	// packets per second, by default we transmit no packets
 	double startupDelay = default (0);	// delay in seconds before the app stars producing packets
 

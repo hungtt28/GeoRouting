@@ -42,7 +42,10 @@ double getAngle(double angle1, double angle2);
 
 double determinant(double a1, double a2, double b1, double b2);
 bool intersectSections(NodeLocation_type begin1, NodeLocation_type end1, NodeLocation_type begin2, NodeLocation_type end2);
+NodeLocation_type intersectSections2(NodeLocation_type begin1, NodeLocation_type end1, NodeLocation_type begin2, NodeLocation_type end2);
 
 NodeLocation_type getCircumscribedcircleCenter(NodeLocation_type node1, NodeLocation_type node2, NodeLocation_type node3);
+
+double distancePoint2Line(NodeLocation_type p0, NodeLocation_type p1, NodeLocation_type p2);
 
 #endif /* GEOHELPER_H_ */
