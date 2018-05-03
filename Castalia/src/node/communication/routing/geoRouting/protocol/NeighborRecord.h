@@ -16,6 +16,7 @@ class NeighborRecord {
 		NodeLocation_type nodeLocation;
 		double ts;
 		int timesRx;
+		double learnedCost;
 		
 	public:
 		NeighborRecord(int id, NodeLocation_type nodeLocation): id(id), nodeLocation(nodeLocation) {};
@@ -27,6 +28,14 @@ class NeighborRecord {
 		virtual NodeLocation_type getNodeLocation() {
 			return nodeLocation;
 		};
+
+		virtual void setNodeLocation(NodeLocation_type nodeLocation_) {
+			nodeLocation = nodeLocation_;
+		};
+
+		virtual double getLearnedCost() {return learnedCost;};
+
+		virtual void setLearnedCost(double learnedCost_) {learnedCost = learnedCost_;};
 };
 
 #endif

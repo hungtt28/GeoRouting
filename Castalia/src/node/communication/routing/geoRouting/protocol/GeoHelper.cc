@@ -85,7 +85,7 @@ NodeLocation_type intersectSections2(NodeLocation_type begin1, NodeLocation_type
 	double x4 = end2.x;
 	double y4 = end2.y;
 	double denominator = (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4);
-	if (abs(denominator) > ZERO) {
+	if (fabs(denominator) > ZERO) {
 		double px = (x1 * y2 - y1 * x2)*(x3 - x4) - (x1 - x2)*(x3 * y4 - y3 * x4);
 		double py = (x1 * y2 - y1 * x2)*(y3 - y4) - (y1 - y2)*(x3 * y4 - y3 * x4);
 		intersectLocation.x = px / denominator;
@@ -118,5 +118,5 @@ double distancePoint2Line(NodeLocation_type p0, NodeLocation_type p1, NodeLocati
 	double y1 = p1.y;
 	double x2 = p2.x;
 	double y2 = p2.y;
-	return abs((y2 - y1) * x0 - (x2 - x1) * y0 + x2 * y1 - y2 * x1) / sqrt((y2 - y1)*(y2 - y1) + (x2 - x1)*(x2 - x1));
+	return fabs((y2 - y1) * x0 - (x2 - x1) * y0 + x2 * y1 - y2 * x1) / sqrt((y2 - y1)*(y2 - y1) + (x2 - x1)*(x2 - x1));
 }

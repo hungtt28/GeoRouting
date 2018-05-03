@@ -84,7 +84,7 @@ struct BoundHoleInfo {
 
 
 class BoundHoleRouting: public VirtualRouting {
- private:
+protected:
     // Parameters
     double netSetupTimeout;
     bool collectTraceInfo;
@@ -109,6 +109,7 @@ class BoundHoleRouting: public VirtualRouting {
 	Nodes boundHoleNodes;
 	std::vector<BoundHoleInfo> boundHoles;
 	int holeCount = 0;
+	int seqNumber = 0;
 	
  protected:
 
@@ -121,7 +122,7 @@ class BoundHoleRouting: public VirtualRouting {
     // void processBufferedPacket();
 
     void sendHelloMessage();
-	virtual void forwardDataPacket(BHRoutingPacket* dataPacket);
+	virtual void forwardDataPacket(GeoPacket* dataPacket);
 	void sendToNextHop(GeoPacket* dataPacket, int nextHop);
 	void processControlPacket(GeoControlPacket *pkt);
 	
@@ -135,7 +136,7 @@ class BoundHoleRouting: public VirtualRouting {
 	int getNeighborCounterClockwise(BHPacket* bhPacket);
 	std::vector<int> getPlanarNeighbors();
 	int getNextPlanarNeighborCounterClockwise(const int startNeighborAddress, double startNeighborAngle);
-	virtual void sendRefreshPacket(BHPacket* pkt);
+	virtual void sendRefreshPacket(GeoPacket* pkt);
 
 };
 

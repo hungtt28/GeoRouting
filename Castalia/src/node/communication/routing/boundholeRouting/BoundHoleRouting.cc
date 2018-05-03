@@ -102,7 +102,7 @@ void BoundHoleRouting::fromApplicationLayer(cPacket * pkt, const char *destinati
 	NodeLocation_type desLocation = appPacket->getDestinationLocation();
 
 	encapsulatePacket(dataPacket, appPacket);
-	dataPacket->setSequenceNumber(appPacket->getSequenceNumber());
+	dataPacket->setSequenceNumber(seqNumber++);
 	dataPacket->setSource(SELF_NETWORK_ADDRESS);
 	dataPacket->setDestination(destination);
 	dataPacket->setDestinationLocation(desLocation);
@@ -196,9 +196,9 @@ void BoundHoleRouting::sendHelloMessage(){
 	return;
 }
 
-void BoundHoleRouting::forwardDataPacket(BHRoutingPacket* pkt) {
+void BoundHoleRouting::forwardDataPacket(GeoPacket* pkt) {
 	
-	BHRoutingPacket *dataPacket = pkt->dup();
+	BHRoutingPacket *dataPacket = dynamic_cast <BHRoutingPacket*>(pkt->dup());
 	NodeLocation_type desLocation = dataPacket->getDestinationLocation();
 	
 	int nextHop = -1;
@@ -355,7 +355,7 @@ int BoundHoleRouting::findNextBoundHole(BHRoutingPacket* dataPacket) {
 			if (fabs(boundDistance - nodeDistance) < ZERO)
 				candidates.push_back(j);
 		}
-		if (minDistance - boundDistance > ZERO) {
+		if (minDistance - boundDistance > ZERO && nodeIndexes.size()) {
 			// choose the best candidate
 			int minHop = std::numeric_limits<int>::max();
 			int head = -1;
@@ -490,6 +490,7 @@ void BoundHoleRouting::suppressedStart() {
 		ingressEdgeList.push_back(IngressEdge(curId, stuckAngle.u.nodeId));
 		
 		BHPacket *bhPacket = new BHPacket("BoundHole control packet", NETWORK_LAYER_PACKET);
+		bhPacket->setSequenceNumber(seqNumber++);
 		bhPacket->setBoundHoleMode(BOUNDHOLE_SUPPRESSED_START_MODE);
 		bhPacket->setOriginalId(curId);
 		bhPacket->setSourceId(curId);
@@ -645,9 +646,9 @@ int BoundHoleRouting::getNeighborCounterClockwise(BHPacket* bhPacket) {
 
 
 // send refresh packet, broadcast hole information to all boundhole nodes
-void BoundHoleRouting::sendRefreshPacket(BHPacket* pkt) {
+void BoundHoleRouting::sendRefreshPacket(GeoPacket* pkt) {
 	
-	BHPacket* bhPacket = pkt->dup();
+	BHPacket* bhPacket = dynamic_cast <BHPacket*>(pkt->dup());
 	
 	int originalId = bhPacket->getOriginalId();
 	int holeId = bhPacket->getHoleId();

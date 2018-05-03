@@ -75,7 +75,9 @@ void RoutingTest::timerFiredCallback(int index)
 			newPacket->setDestinationLocation(nodeLocation);
 			toNetworkLayer(newPacket, par("nextRecipient"));
 			dataSN++;
-			// setTimer(SEND_PACKET, packet_spacing);
+			if (dataSN == 100)
+				break;
+			setTimer(SEND_PACKET, packet_spacing);
 			break;
 		}
 	}

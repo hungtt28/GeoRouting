@@ -9,19 +9,15 @@
 
 void NeighborTable::update(NeighborRecord *neighborRecord) {
 	
-	int recordIndex = -1;
-	for (int i = 0; i < neighborTable.size(); i++) {
-		if (neighborTable[i]->getId() == neighborRecord->getId()) {
-			recordIndex = i;
-			break;
-		}
-	}
+	int recordIndex = getNeighborIndex(neighborRecord->getId());
 	
 	if (recordIndex == -1) {
 		// add new neighbor record
 		neighborTable.push_back(neighborRecord);
 	}
 	else {
+		neighborTable[recordIndex]->setLearnedCost(neighborRecord->getLearnedCost());
+		neighborTable[recordIndex]->setNodeLocation(neighborRecord->getNodeLocation());
 		delete neighborRecord;
 	}
 }
