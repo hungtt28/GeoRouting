@@ -1,0 +1,23 @@
+
+Hole detection
+
+Definition: We consider a stuck node is a strong stuck node as defined in the [BoundHole]. If p is a stuck node, we call pu, pv is two edge of the hole which p is belong to.
+
+1) Stuck node self-detection: For each node p of the network, firstly, with each neighbor u, we find the next neighbor v by using [RollingBall][?] algorithm with the range [r=1/2R]. For each pair of (u, v), we make out that p is stuck in the direction of upv or not - upv called stuck angle in [BoundHole]. If p has at least one stuck angle then it start hole detection processing.
+
+2) Hole dectection: Each stuck node start sending [RollingBall] packet - range [r=1/2R] by counter-clockwise around the hole to collecting all the nodes on the boundary. With the pair (u, v) of stuck node of p, it transfer the packet to node v. At the node v, [RollingBall] algorithm find the next hop t from start adjection pv and we got the path pvt. The process continue until the packet goes back to the node p and encloses the hole boundary. This processing terminates because it contruct the hole boundary as a alpha-shape [1980][GAR] whose nodes on the boundary are the alpha-extreme nodes. The alpha-shape boundary is closed region and finite.
+
+Algorithm:
+Input: current node p with its neighbor N, start adjection pu
+Output: the neighbor selected
+
+for (each neighbor v in N) {
+	theta = angle of upv;
+	gamma = acos(pv/r);
+	sigma = acos(pu/r);
+	t = theta - gamma - sigma;
+	if (t is  minimum)
+		return v;
+}
+
+3) As many of the stuck nodes will determine the same hole, the alpha-shape of set of nodes in the plane is unique so even when hole dectection processing start in any node, many unnecesssary [RollingBall] packet could be generated. To reduce network traffic, when a node receive [RollingBall] packet via an ingress adjection, the packet started from the node has lower ID is considered to be dropped.
